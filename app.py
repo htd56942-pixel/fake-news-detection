@@ -42,30 +42,34 @@ import streamlit as st
 
 st.set_page_config(page_title="Fake News Detector", page_icon="📰", layout="wide")
 
-# Header
-st.markdown("<h1 style='color:#1E90FF;'>📰 Fake News Detector</h1>", unsafe_allow_html=True)
-st.markdown("<p style='font-size:18px;color:gray;'>Ứng dụng phân biệt tin thật - tin giả</p>", unsafe_allow_html=True)
+# CSS chỉnh nền công nghệ
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #0f0f0f; /* nền đen hiện đại */
+        color: #e0e0e0; /* chữ xám sáng */
+        font-family: 'Segoe UI', sans-serif;
+    }
+    .stTextArea textarea {
+        background-color: #1e1e1e;
+        color: #00ffcc; /* chữ xanh neon */
+        border: 1px solid #00ffcc;
+    }
+    .stButton>button {
+        background-color: #00ffcc;
+        color: black;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-# Sidebar
-st.sidebar.title("Menu")
-st.sidebar.radio("Chọn chế độ:", ["Kiểm tra một câu", "Kiểm tra bài báo", "Xem thống kê"])
+st.title("📰 Fake News Detector")
+st.text_area("Nhập nội dung cần kiểm tra:")
+st.button("Phân tích")
 
-# Input
-text = st.text_area("Nhập nội dung cần kiểm tra:")
-
-if st.button("Phân tích"):
-    result = "FAKE NEWS 🚨"
-    confidence = 92
-    st.markdown(
-        f"""
-        <div style='background-color:#FF0000;padding:20px;border-radius:10px;'>
-            <h2 style='color:white;'>BREAKING NEWS</h2>
-            <h3 style='color:white;'>{result}</h3>
-            <p style='color:white;'>Độ tin cậy: {confidence}%</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-    st.progress(confidence/100)
 
 
