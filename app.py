@@ -38,5 +38,34 @@ if st.button("Kiểm tra"):
             st.error(f"🚨 Kết quả: Tin giả (Độ tin cậy {probs[1]*100:.2f}%)")
         else:
             st.success(f"✅ Kết quả: Tin thật (Độ tin cậy {probs[0]*100:.2f}%)")
+import streamlit as st
+
+st.set_page_config(page_title="Fake News Detector", page_icon="📰", layout="wide")
+
+# Header
+st.markdown("<h1 style='color:#1E90FF;'>📰 Fake News Detector</h1>", unsafe_allow_html=True)
+st.markdown("<p style='font-size:18px;color:gray;'>Ứng dụng phân biệt tin thật - tin giả</p>", unsafe_allow_html=True)
+
+# Sidebar
+st.sidebar.title("Menu")
+st.sidebar.radio("Chọn chế độ:", ["Kiểm tra một câu", "Kiểm tra bài báo", "Xem thống kê"])
+
+# Input
+text = st.text_area("Nhập nội dung cần kiểm tra:")
+
+if st.button("Phân tích"):
+    result = "FAKE NEWS 🚨"
+    confidence = 92
+    st.markdown(
+        f"""
+        <div style='background-color:#FF0000;padding:20px;border-radius:10px;'>
+            <h2 style='color:white;'>BREAKING NEWS</h2>
+            <h3 style='color:white;'>{result}</h3>
+            <p style='color:white;'>Độ tin cậy: {confidence}%</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    st.progress(confidence/100)
 
 
