@@ -38,38 +38,4 @@ if st.button("Kiểm tra"):
             st.error(f"🚨 Kết quả: Tin giả (Độ tin cậy {probs[1]*100:.2f}%)")
         else:
             st.success(f"✅ Kết quả: Tin thật (Độ tin cậy {probs[0]*100:.2f}%)")
-import streamlit as st
-
-st.set_page_config(page_title="Fake News Detector", page_icon="📰", layout="wide")
-
-# CSS chỉnh nền công nghệ
-st.markdown(
-    """
-    <style>
-    body {
-        background-color: #0f0f0f; /* nền đen hiện đại */
-        color: #e0e0e0; /* chữ xám sáng */
-        font-family: 'Segoe UI', sans-serif;
-    }
-    .stTextArea textarea {
-        background-color: #1e1e1e;
-        color: #00ffcc; /* chữ xanh neon */
-        border: 1px solid #00ffcc;
-    }
-    .stButton>button {
-        background-color: #00ffcc;
-        color: black;
-        border-radius: 8px;
-        font-weight: bold;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-st.title("📰 Fake News Detector")
-st.text_area("Nhập nội dung cần kiểm tra:")
-st.button("Phân tích")
-
-
 
